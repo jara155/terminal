@@ -1,4 +1,16 @@
-# ZSH For Terminal
+
+
+<p align="center">
+  <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fed%2FKonsole_icon_breeze.svg%2F1024px-Konsole_icon_breeze.svg.png&f=1&nofb=1" width="200"/> 
+  <p align="center">
+    <strong>ZSH For Terminal</strong>
+  </p>
+</p>
+
+<div align="center">
+    <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black" />
+    <img src="https://img.shields.io/badge/shell_script-%23121011.svg?style=for-the-badge&logo=gnu-bash&logoColor=white" />
+</div>
 
 ## General Information
 - Customization terminal.
