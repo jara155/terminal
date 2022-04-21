@@ -56,16 +56,12 @@ case $option in
 
             clear
             echo "Nakopírováno."
-        fi
-
-        if [ $addon == 1 ]; then
+        elif [ $addon == 1 ]; then
             sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/zsh-autosuggestions
             
             clear
             echo "Nakopírováno."
-        fi
-
-        if [ $addon == 2 ]; then
+        elif [ $addon == 2 ]; then
             sudo apt install git -y
 
             clear
@@ -75,6 +71,8 @@ case $option in
             else
                 echo "?? Ne? Prej git nemáš."
             fi
+        else
+            echo "Musíš něco vybrat víš."
         fi
         ;;
     
