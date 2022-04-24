@@ -1,22 +1,23 @@
 #!/bin/bash
 
+# Dodělat možnost 3
+
 clear
 
 echo "Vítej, poutníku."
 
-echo "Vyber z možností:"
-
-echo "     
-    0) Nainstalovat ZSH
-    1) Nakopírovat .zshrc | Z kali linuxu, ale upravený + git
-    2) Nainstalovat addons >
+echo "Vyber z možností:  
+    [01] Nainstalovat ZSH
+    [02] Nakopírovat .zshrc | Z kali linuxu, ale upravený + git
+    [03] Nainstalovat addons >
+    [00] Zavřít
 "
 
 read option
 clear
 
 case $option in
-    0)
+    01 | 1)
         echo "Ok."
         echo "Instaluji"
         sudo apt install zsh -y
@@ -27,21 +28,16 @@ case $option in
             echo "?? Ne? Prej zsh nemáš."
         fi
         ;;
-
-    1)
-        echo "Ok."
-        echo "Instaluji"
-        sudo apt install zsh -y
-        clear
-
-        if [ -f /usr/bin/git ]; then
-            echo "Hezkyyyy, git nainstalován."
-        else
-            echo "?? Ne? Prej git nemáš."
+    02 | 2)
+        echo "Kopíruju"
+        if [ -f ~/.zshrc ]; then
+            rm ~/.zshrc
         fi
+        cp $(pwd)/assets/.zshrc ~/.zshrc
+        echo "Nakopírováno."
         ;;
-    
-    2)
+
+    03 | 3)
         echo "Co chceš nainstalovat:"
         echo "Mám:
         0) autosuggestions
@@ -55,12 +51,12 @@ case $option in
             sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting /usr/share/zsh-syntax-highlighting
 
             clear
-            echo "Nakopírováno."
+            echo "Nainstalováno"
         elif [ $addon == 1 ]; then
             sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/zsh-autosuggestions
             
             clear
-            echo "Nakopírováno."
+            echo "Nainstalováno"
         elif [ $addon == 2 ]; then
             sudo apt install git -y
 
@@ -76,17 +72,14 @@ case $option in
         fi
         ;;
     
-    3)
-        echo "Kopíruju"
-        rm ~/.zshrc
-        cp .zshrc ~/.zshrc
-        echo "Nakopírováno."
-        ;;
-
-    *)
-        echo "Musíš vybrat z možností ne si je vymyslet"
+    00 | 0)
+        exit
         ;;
     
+    *)
+        echo "Musíš si vybrat, ne vymýšlet."
+        ;;
+
 esac
 
 echo
