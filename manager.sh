@@ -32,11 +32,11 @@ case $option in
         clear
         echo "[] = pwd(Trasa), {} = git branch"
         echo
-        echo "┌──($(whoami)@Linux)-[~]-{}"
-        echo "└─$ Ahuuj"
+        echo "$(tput setaf 4)┌──($(tput setaf 1)$(whoami)@Linux$(tput setaf 4))-[$(tput setaf 7)~$(tput setaf 4)]-{$(tput setaf 2)main$(tput setaf 4)}"
+        echo "$(tput setaf 4)└─$(tput setaf 1)$ Ahuuj"
         
         echo
-        echo "Libí? (y/n)"
+        echo "$(tput setaf 2)Libí? (y/n)$(tput setaf 0)"
 
         read moznost
         clear
