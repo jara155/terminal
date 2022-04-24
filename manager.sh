@@ -87,5 +87,5 @@ case $option in
 
 esac
 
-echo
+clear
 echo "Užívej"
