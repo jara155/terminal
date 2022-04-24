@@ -1,8 +1,12 @@
 #!/bin/bash
 
+source "assets/progress.sh"
+
 # Dodělat možnost 3
 
 clear
+
+progress
 
 echo "Vítej, poutníku."
 
