@@ -2,16 +2,14 @@
 
 source "assets/progress.sh"
 
-# Dodělat možnost 3
-
 clear
 
 echo "Vítej, poutníku."
 
 echo "Vyber z možností:  
     [01] Nainstalovat ZSH
-    [02] Nakopírovat .zshrc | Z kali linuxu, ale upravený + git
-    [03] Nainstalovat addons >
+    [02] Nakopírovat .zshrc
+    [03] Nainstalovat addons/
     [00] Zavřít
 "
 
@@ -42,26 +40,29 @@ case $option in
     03 | 3)
         echo "Co chceš nainstalovat:"
         echo "Mám:
-        0) autosuggestions
-        1) bash-completion
-        2) git
+        [1] autosuggestions
+            - Automaticky nabídne příkaz, který byl použit.
+        [2] syntax-highlighting
+            - Obarví příkaz, červená = neexistje, zelená = existuje
+        [3] git
+            - Version Control, od Linus Torvalds.
         "
 
         read addon
 
-        if [ $addon == 0 ]; then
-            sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting /usr/share/zsh-syntax-highlighting
-
-            clear
-            progress
-            echo "Nainstalováno"
-        elif [ $addon == 1 ]; then
+        if [ $addon == 1 ]; then
             sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/zsh-autosuggestions
             
             clear
             progress
             echo "Nainstalováno"
         elif [ $addon == 2 ]; then
+            sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting /usr/share/zsh-syntax-highlighting
+
+            clear
+            progress
+            echo "Nainstalováno"
+        elif [ $addon == 3 ]; then
             sudo apt install git -y
 
             clear
