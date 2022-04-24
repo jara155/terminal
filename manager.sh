@@ -6,8 +6,6 @@ source "assets/progress.sh"
 
 clear
 
-progress
-
 echo "Vítej, poutníku."
 
 echo "Vyber z možností:  
@@ -33,11 +31,11 @@ case $option in
         fi
         ;;
     02 | 2)
-        echo "Kopíruju"
         if [ -f ~/.zshrc ]; then
             rm ~/.zshrc
         fi
         cp $(pwd)/assets/.zshrc ~/.zshrc
+        progress
         echo "Nakopírováno."
         ;;
 
@@ -55,11 +53,13 @@ case $option in
             sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting /usr/share/zsh-syntax-highlighting
 
             clear
+            progress
             echo "Nainstalováno"
         elif [ $addon == 1 ]; then
             sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/zsh-autosuggestions
             
             clear
+            progress
             echo "Nainstalováno"
         elif [ $addon == 2 ]; then
             sudo apt install git -y

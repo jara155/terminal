@@ -5,6 +5,5 @@ progress(){
         str=`printf '%*s' $i ''|tr ' ' '.'/`
         echo -n "[$str] $i"%$'\r'
     done
-    echo -n "]"
     echo
 }
