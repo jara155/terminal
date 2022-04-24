@@ -29,12 +29,31 @@ case $option in
         fi
         ;;
     02 | 2)
-        if [ -f ~/.zshrc ]; then
-            rm ~/.zshrc
+        clear
+        echo "[] = pwd(Trasa), {} = git branch"
+        echo
+        echo "┌──($(whoami)@Linux)-[~]-{}"
+        echo "└─$ Ahuuj"
+        
+        echo
+        echo "Libí? (y/n)"
+
+        read moznost
+        clear
+
+        if [ $moznost == "y" ]; then
+            if [ -f ~/.zshrc ]; then
+                rm ~/.zshrc
+            fi
+            cp $(pwd)/assets/.zshrc ~/.zshrc
+            progress
+            echo "Nakopírováno."
+        else
+            echo "Tak ne no, třeba na budúce."
+            sleep 1.5
+            command ./manager.sh
         fi
-        cp $(pwd)/assets/.zshrc ~/.zshrc
-        progress
-        echo "Nakopírováno."
+
         ;;
 
     03 | 3)
@@ -87,5 +106,6 @@ case $option in
 
 esac
 
+sleep 1
 clear
 echo "Užívej"
