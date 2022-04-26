@@ -46,6 +46,6 @@ $ ./manager.sh
 ## Features
 - [x] Install zsh
 - [x] Install addons
-- [x] Install template .zshrc
+- [x] Install template .zshrc w/ preview
 - [x] ProgressBar
 - [x] Git Alias

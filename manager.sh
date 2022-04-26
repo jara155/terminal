@@ -2,16 +2,30 @@
 
 source "assets/progress.sh"
 
+blk='\e[0;30m' # Black - Regular
+red='\e[0;31m' # Red
+grn='\e[0;32m' # Green
+org='\e[0;33m' # Orange
+blu='\e[0;34m' # Blue
+pur='\e[0;35m' # Purple
+cyn='\e[0;36m' # Cyan
+wht='\e[0;37m' # White
+
+
 clear
 
-echo "Vítej, poutníku."
+echo -e "${blu}Vítej, poutníku."
 
-echo "Vyber z možností:  
-    [01] Nainstalovat ZSH
-    [02] Nakopírovat .zshrc
-    [03] Nainstalovat addons/
-    [00] Zavřít
+echo
+
+echo -e "${wht}Vyber z možností:  
+    ${red}[${grn}01${red}] ${org}Nainstalovat ZSH
+    ${red}[${grn}02${red}] ${org}Nakopírovat .zshrc
+    ${red}[${grn}03${red}] ${org}Nainstalovat addons/
+    ${red}[${grn}00${red}] ${org}Zavřít
 "
+
+echo -e "${wht}"
 
 read option
 clear
@@ -65,6 +79,8 @@ case $option in
             - Obarví příkaz, červená = neexistuje, zelená = existuje
         [3] git
             - Version Control, od Linus Torvalds.
+        [0] <<
+            - Zpět
         "
 
         read addon
@@ -89,8 +105,12 @@ case $option in
             if [ -f /usr/bin/git ]; then
                 echo "Hezkyyyy, git nainstalován."
             else
-                echo "?? Ne? Prej git nemáš."
+                echo "?? Ne? Prej git nemáš. Ono se to samo nevybere"
             fi
+        elif [ $addon == 0 ]; then
+
+            command ./manager.sh
+
         else
             echo "Musíš něco vybrat víš."
         fi
