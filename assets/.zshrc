@@ -116,10 +116,8 @@ configure_prompt() {
 
 # The following block is surrounded by two delimiters.
 # These delimiters must not be modified. Thanks.
-# START KALI CONFIG VARIABLES
 PROMPT_ALTERNATIVE=twoline
 NEWLINE_BEFORE_PROMPT=yes
-# STOP KALI CONFIG VARIABLES
 
 if [ "$color_prompt" = yes ]; then
     # override default virtualenv indicator in prompt
@@ -245,8 +243,10 @@ alias la='ls -A'
 alias l='ls -CF'
 
 alias ga.='git add .'
-alias gc='git commit'
-alias gca='git commit --amend'
+alias gac='git add . && git commit'
+alias gaca='git add . && git commit --amend'
+alias gc='git commit && sleep 2 && cl'
+alias gca='git commit --amend && sleep 2 && cl'
 alias gl='git log'
 alias glol='git log --oneline'
 alias gp='git push origin main --force && cl'
@@ -271,3 +271,7 @@ PATH=$PATH:$JAVA_HOME/bin
 export PATH
 
 nf
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

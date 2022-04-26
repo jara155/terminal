@@ -6,26 +6,50 @@ blk='\e[0;30m' # Black - Regular
 red='\e[0;31m' # Red
 grn='\e[0;32m' # Green
 org='\e[0;33m' # Orange
-blu='\e[0;34m' # Blue
+blue='\e[0;34m' # bluee
 pur='\e[0;35m' # Purple
 cyn='\e[0;36m' # Cyan
 wht='\e[0;37m' # White
+reset='\e[0;m' # Reset
 
 
 clear
 
-echo -e "${blu}Vítej, poutníku."
+echo -e "${blue}Vítej, poutníku."
 
 echo
 
-echo -e "${wht}Vyber z možností:  
+echo -e "${wht}Co máš za package manager?:
+    ${red}[${grn}01${red}] ${org}Pacman/Pamac
+    ${red}[${grn}02${red}] ${org}APT
+    ${red}[${grn}03${red}] ${org}DNF
+    ${reset}
+"
+read manager
+
+case $manager in
+    01 | 1)
+        manager="pacman -S"
+        ;;
+    02 | 2)
+        manager="apt install"
+        ;;
+    03 | 3)
+        manager="dnf install"
+        ;;
+    esac
+
+echo -e "${grn}[+] Vybrán package manager ($manager)"
+sleep 3
+clear
+
+echo -e "($manager) ${wht}| Vyber z možností:  
     ${red}[${grn}01${red}] ${org}Nainstalovat ZSH
     ${red}[${grn}02${red}] ${org}Nakopírovat .zshrc
     ${red}[${grn}03${red}] ${org}Nainstalovat addons/
     ${red}[${grn}00${red}] ${org}Zavřít
+    ${reset}
 "
-
-echo -e "${wht}"
 
 read option
 clear
@@ -34,23 +58,23 @@ case $option in
     01 | 1)
         echo "Ok."
         echo "Instaluji"
-        sudo apt install zsh -y
+        sudo $manager zsh
         clear
         if [ -f /usr/bin/zsh ]; then
-            echo "Hezkyyyy, zsh nainstalován."
+            echo -e "${grn}[+] Hezkyyyy, zsh nainstalován."
         else
-            echo "?? Ne? Prej zsh nemáš."
+            echo -e "${ylw}[~]?? Ne? Prej zsh nemáš."
         fi
         ;;
     02 | 2)
         clear
         echo "[] = pwd(Trasa), {} = git branch"
         echo
-        echo "$(tput setaf 4)┌──($(tput setaf 1)$(whoami)@Linux$(tput setaf 4))-[$(tput setaf 7)~$(tput setaf 4)]-{$(tput setaf 2)main$(tput setaf 4)}"
-        echo "$(tput setaf 4)└─$(tput setaf 1)$ Ahuuj"
+        echo -e "${blue}┌──(${red}$(whoami)@Linux${blue})-[${wht}~${blue}]-{${grn}main${blue}}"
+        echo -e "${blue}└─${red}$ Ahuuj"
         
         echo
-        echo "$(tput setaf 2)Libí? (y/n)$(tput setaf 0)"
+        echo -e "${reset}Libí? (${grn}y${reset}/${red}n${reset})"
 
         read moznost
         clear
@@ -61,9 +85,9 @@ case $option in
             fi
             cp $(pwd)/assets/.zshrc ~/.zshrc
             progress
-            echo "Nakopírováno."
+            echo -e "${grn}[+] Nakopírováno."
         else
-            echo "Tak ne no, třeba na budúce."
+            echo -e "${red}[-] Tak ne no, třeba na budúce."
             sleep 1.5
             command ./manager.sh
         fi
@@ -90,29 +114,29 @@ case $option in
             
             clear
             progress
-            echo "Nainstalováno"
+            echo -e "${grn}[+] Nainstalováno"
         elif [ $addon == 2 ]; then
             sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting /usr/share/zsh-syntax-highlighting
 
             clear
             progress
-            echo "Nainstalováno"
+            echo -e "${grn}[+] Nainstalováno"
         elif [ $addon == 3 ]; then
-            sudo apt install git -y
+            sudo $manager git
 
             clear
             
             if [ -f /usr/bin/git ]; then
-                echo "Hezkyyyy, git nainstalován."
+                echo -e "${grn}[+] Hezkyyyy, git nainstalován."
             else
-                echo "?? Ne? Prej git nemáš. Ono se to samo nevybere"
+                echo -e "${ylw}[~]?? Ne? Prej git nemáš. Ono se to samo nevybere"
             fi
         elif [ $addon == 0 ]; then
 
             command ./manager.sh
 
         else
-            echo "Musíš něco vybrat víš."
+            echo -e "${red}[-]Musíš něco vybrat víš."
         fi
         ;;
     
@@ -121,11 +145,11 @@ case $option in
         ;;
     
     *)
-        echo "Musíš si vybrat, ne vymýšlet."
+        echo -e "${red}[-]Musíš si vybrat, ne vymýšlet."
         ;;
 
 esac
 
 sleep 1
 clear
-echo "Užívej"
+echo -e "${wht}]Užívej"
