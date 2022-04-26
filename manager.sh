@@ -62,7 +62,7 @@ case $option in
         [1] autosuggestions
             - Automaticky nabídne příkaz, který byl použit.
         [2] syntax-highlighting
-            - Obarví příkaz, červená = neexistje, zelená = existuje
+            - Obarví příkaz, červená = neexistuje, zelená = existuje
         [3] git
             - Version Control, od Linus Torvalds.
         "

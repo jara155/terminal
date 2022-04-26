@@ -41,9 +41,11 @@ $ ./manager.sh
 #### Konsole
 1. Settings
 2. Edit current profile
-3. General > Command = usr/bin/zsh
+3. General > Command = /usr/bin/zsh
 
 ## Features
 - [x] Install zsh
-- [x] Install addon
+- [x] Install addons
 - [x] Install template .zshrc
+- [x] ProgressBar
+- [x] Git Alias
