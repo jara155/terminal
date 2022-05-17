@@ -19,31 +19,18 @@ echo -e "${blue}Vítej, poutníku."
 
 echo
 
-echo -e "${grn}[+] ${wht}Co máš za package manager?:
-    ${red}[${grn}01${red}] ${org}Pacman
-    ${red}[${grn}02${red}] ${org}APT
-    ${red}[${grn}03${red}] ${org}DNF
-    ${reset}
-"
-read manager
+## GetPackageManager
+if [ -f /usr/bin/pacman ]; then
+    manager="pacman -S"
+elif [-f /usr/bin/apt ]; then
+    manager="apt install"
+elif [-f /usr/bin/dnf ]; then
+    manager="dnf install"
+else
+    manager=""
+fi
 
-case $manager in
-    01 | 1)
-        manager="pacman -S"
-        ;;
-    02 | 2)
-        manager="apt install"
-        ;;
-    03 | 3)
-        manager="dnf install"
-        ;;
-    esac
-
-echo -e "${grn}[+] Vybrán package manager ($manager)"
-sleep 3
-clear
-
-echo -e "($manager) ${wht}| Vyber z možností:  
+echo -e "${grn}[+] Vyber z možností:  
     ${red}[${grn}01${red}] ${org}Nainstalovat ZSH
     ${red}[${grn}02${red}] ${org}Nakopírovat .zshrc
     ${red}[${grn}03${red}] ${org}Nainstalovat addons/
@@ -163,7 +150,6 @@ case $option in
 
             sleep 2
             clear
-            command ./manager.sh
         fi
 
 
