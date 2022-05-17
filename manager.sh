@@ -67,7 +67,9 @@ case $option in
         read moznost
         clear
 
-        if [ $moznost == "y" ]; then
+        moznost=${moznost^^}
+
+        if [ $moznost == "Y" ]; then
             if [ -f ~/.zshrc ]; then
                 rm ~/.zshrc
             fi
@@ -129,8 +131,8 @@ case $option in
             command ./manager.sh
         elif [ $addon == 0 ]; then
 
-            command ./manager.sh
             sleep 1
+            command ./manager.sh
 
         else
             echo -e "${red}[-]Musíš něco vybrat víš."
@@ -145,13 +147,17 @@ case $option in
         echo -e "${grn}[+] Chceš nainstalovat neofetch?(A/N): "
         read option
 
-        if [ $option == "a" ]; then
+        option=${option^^}
+
+        if [ $option == "A" ]; then
             sudo $manager neofetch
 
             sleep 2
             clear
         fi
 
+        sleep 1
+        command ./manager.sh
 
         ;;
 
@@ -161,7 +167,7 @@ case $option in
         ;;
     
     *)
-        echo -e "${red}[-]Musíš si vybrat, ne vymýšlet."
+        echo -e "${red}[-] Musíš si vybrat, ne vymýšlet."
         sleep 1
         ;;
 
