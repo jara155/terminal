@@ -19,7 +19,7 @@ echo -e "${blue}Vítej, poutníku."
 
 echo
 
-echo -e "${wht}Co máš za package manager?:
+echo -e "${grn}[+] ${wht}Co máš za package manager?:
     ${red}[${grn}01${red}] ${org}Pacman/Pamac
     ${red}[${grn}02${red}] ${org}APT
     ${red}[${grn}03${red}] ${org}DNF
@@ -63,7 +63,7 @@ case $option in
         if [ -f /usr/bin/zsh ]; then
             echo -e "${grn}[+] Hezkyyyy, zsh nainstalován."
         else
-            echo -e "${ylw}[~]?? Ne? Prej zsh nemáš."
+            echo -e "${ylw}[~] ?? Ne? Prej zsh nemáš."
         fi
         ;;
     02 | 2)
@@ -101,8 +101,9 @@ case $option in
             - Automaticky nabídne příkaz, který byl použit.
         [2] syntax-highlighting
             - Obarví příkaz, červená = neexistuje, zelená = existuje
-        [3] git
+        [3] git + .gitconfig
             - Version Control, od Linus Torvalds.
+            - Máš i gitconfig (user, email, editor)
         [0] <<
             - Zpět
         "
@@ -123,6 +124,9 @@ case $option in
             echo -e "${grn}[+] Nainstalováno"
         elif [ $addon == 3 ]; then
             sudo $manager git
+
+            rm .gitconfig
+            cp $(pwd)/assets/.gitconfig ~/.gitconfig
 
             clear
             
