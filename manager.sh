@@ -47,6 +47,7 @@ echo -e "($manager) ${wht}| Vyber z možností:
     ${red}[${grn}01${red}] ${org}Nainstalovat ZSH
     ${red}[${grn}02${red}] ${org}Nakopírovat .zshrc
     ${red}[${grn}03${red}] ${org}Nainstalovat addons/
+    ${red}[${grn}04${red}] ${org}Nastavení Neofetch/
     ${red}[${grn}00${red}] ${org}Zavřít
     ${reset}
 "
@@ -143,6 +144,12 @@ case $option in
             echo -e "${red}[-]Musíš něco vybrat víš."
         fi
         ;;
+    
+    04 | 4)
+
+        
+        ;;
+
     
     00 | 0)
         exit
