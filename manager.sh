@@ -144,7 +144,7 @@ case $option in
     04 | 4)
         clear
         
-        echo -e "${grn}[+] Chceš nainstalovat neofetch?(A/N): "
+        echo -e "${grn}[+] Chceš nainstalovat neofetch?(${grn}A${wht}/${red}N${reset}): "
         read option
 
         option=${option^^}
@@ -154,6 +154,56 @@ case $option in
 
             sleep 2
             clear
+        fi
+
+        clear
+        echo -e "${grn}[+] Chceš mít nový design?(${grn}A${wht}/${red}N${reset}):"
+        read option
+
+        option=${option^^}
+
+        if [ $option == "A" ]; then
+            clear
+
+            echo -e " 
+            ┌───────── Hardware Information ─────────┐
+    LOGO        HOST
+                CPU
+                GPU
+                RAM
+            ├───────── Software Information ─────────┤
+                LINUX
+                KERNEL
+                WM
+                SHELL
+            └───────────────────────────────────────┘
+                    ${red}⬤  ${grn}⬤  ${org}⬤  ${blue}⬤  ${pur}⬤  ${reset}⬤  ⬤  ⬤  ⬤ 
+            
+            "
+
+            echo -e "${reset}Libí? (${grn}A${reset}/${red}N${reset}):"
+            read option
+            option=${option^^}
+
+            if [ $option == "A" ]; then
+                if [ -f ~/.config/neofetch/neofetch.conf ]; then 
+                    rm ~/.config/neofetch/neofetch.conf
+                fi
+
+                cp $(pwd)/assets/neofetch.conf ~/.config/neofetch/config.conf
+            fi
+        fi
+
+        clear
+        echo -e "${grn}[+] Chceš mít alias nf?(${grn}A${wht}/${red}N${reset}):"
+        read option
+
+        option=${option^^}
+
+        if [ $option == "A" ]; then
+            sudo cp /bin/neofetch /bin/nf
+            progress
+            echo -e "${grn}[+] Provedeno"
         fi
 
         sleep 1

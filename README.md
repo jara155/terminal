@@ -17,8 +17,22 @@
 - Terminal that look like from Kali Linux
 
 ## Table of contents
-- [Instalation](#Instalation)
 - [Features](#Features)
+- [PackageManagers](#PM)
+- [Instalation](#Instalation)
+
+## Features
+- [x] Install zsh
+- [x] Install addons
+- [x] Install template .zshrc w/ preview
+- [x] ProgressBar
+- [x] Git Alias
+
+## PM
+- Podporované package managery
+```sh
+Pacman, APT, DNF
+```
 
 ## Instalation
 
@@ -42,10 +56,3 @@ $ ./manager.sh
 1. Settings
 2. Edit current profile
 3. General > Command = /usr/bin/zsh
-
-## Features
-- [x] Install zsh
-- [x] Install addons
-- [x] Install template .zshrc w/ preview
-- [x] ProgressBar
-- [x] Git Alias
