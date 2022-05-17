@@ -20,7 +20,7 @@ echo -e "${blue}Vítej, poutníku."
 echo
 
 echo -e "${grn}[+] ${wht}Co máš za package manager?:
-    ${red}[${grn}01${red}] ${org}Pacman/Pamac
+    ${red}[${grn}01${red}] ${org}Pacman
     ${red}[${grn}02${red}] ${org}APT
     ${red}[${grn}03${red}] ${org}DNF
     ${reset}
@@ -115,14 +115,16 @@ case $option in
             sudo git clone https://github.com/zsh-users/zsh-autosuggestions /usr/share/zsh-autosuggestions
             
             clear
-            progress
             echo -e "${grn}[+] Nainstalováno"
+            sleep 3
+            command ./manager.sh
         elif [ $addon == 2 ]; then
             sudo git clone https://github.com/zsh-users/zsh-syntax-highlighting /usr/share/zsh-syntax-highlighting
 
             clear
-            progress
             echo -e "${grn}[+] Nainstalováno"
+            sleep 3
+            command ./manager.sh
         elif [ $addon == 3 ]; then
             sudo $manager git
 
@@ -136,18 +138,35 @@ case $option in
             else
                 echo -e "${ylw}[~]?? Ne? Prej git nemáš. Ono se to samo nevybere"
             fi
+            sleep 3
+            command ./manager.sh
         elif [ $addon == 0 ]; then
 
             command ./manager.sh
+            sleep 1
 
         else
             echo -e "${red}[-]Musíš něco vybrat víš."
+            sleep 3
+            command ./manager.sh
         fi
         ;;
     
     04 | 4)
-
+        clear
         
+        echo -e "${grn}[+] Chceš nainstalovat neofetch?(A/N): "
+        read option
+
+        if [ $option == "a" ]; then
+            sudo $manager neofetch
+
+            sleep 2
+            clear
+            command ./manager.sh
+        fi
+
+
         ;;
 
     
@@ -157,10 +176,10 @@ case $option in
     
     *)
         echo -e "${red}[-]Musíš si vybrat, ne vymýšlet."
+        sleep 1
         ;;
 
 esac
 
-sleep 1
 clear
-echo -e "${wht}]Užívej"
+#echo -e "${wht}Užívej"
