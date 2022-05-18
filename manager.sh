@@ -19,16 +19,22 @@ echo -e "${blue}Vítej, poutníku."
 
 echo
 
-## GetPackageManager
-if [ -f /usr/bin/pacman ]; then
+managers=( "pacman" "apt" "dnf" "yay" )
+
+for i in "${managers[@]}"; do
+    if [ -f "/usr/bin/"$i ]; then
+        selected=$i
+    fi
+done
+
+if [ $selected == "pacman" ]; then
     manager="pacman -S"
-elif [-f /usr/bin/apt ]; then
-    manager="apt install"
-elif [-f /usr/bin/dnf ]; then
-    manager="dnf install"
-else
-    manager=""
 fi
+    
+
+manager=$selected" install"
+
+
 
 echo -e "${grn}[+] Vyber z možností:  
     ${red}[${grn}01${red}] ${org}Nainstalovat ZSH
