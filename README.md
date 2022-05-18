@@ -3,7 +3,7 @@
 <p align="center">
   <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fed%2FKonsole_icon_breeze.svg%2F1024px-Konsole_icon_breeze.svg.png&f=1&nofb=1" width="200"/> 
   <p align="center">
-    <h3 align="center">ZSH For Terminal</h3>
+    <h3 align="center">ZSH Assets</h3>
   </p>
 </p>
 
@@ -18,18 +18,20 @@
 
 ## Table of contents
 - [Features](#Features)
-- [PackageManagers](#PM)
+- [Package Managers](#PM)
 - [Instalation](#Instalation)
 
 ## Features
 - [x] Install zsh
 - [x] Install addons
+- [x] Auto-getting package manager
 - [x] Install template .zshrc w/ preview
 - [x] ProgressBar
 - [x] Git Alias
+- [x] Neofetch
 
 ## PM
-- Podporované package managery
+- Supported package managers
 ```sh
 Pacman, APT, DNF
 ```
