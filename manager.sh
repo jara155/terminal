@@ -35,6 +35,7 @@ echo -e "${grn}[+] Vyber z možností:
     ${red}[${grn}02${red}] ${org}Nakopírovat .zshrc
     ${red}[${grn}03${red}] ${org}Nainstalovat addons/
     ${red}[${grn}04${red}] ${org}Nastavení Neofetch/
+    ${red}[${grn}05${red}] ${org}Nainstalovat LY/
     ${red}[${grn}00${red}] ${org}Zavřít
     ${reset}
 "
@@ -211,6 +212,40 @@ case $option in
 
         ;;
 
+    05 | 5)
+
+        clear
+        echo -e "${grn}[+] Ly je Window Manager, který vypadá jak pro nerdy.
+        ${reset}- Toto je pouze automatická instalace (https://github.com/fairyglade/ly)
+        ${reset}- https://user-images.githubusercontent.com/5473047/88958888-65efbf80-d2a1-11ea-8ae5-3f263bce9cce.png
+        "
+
+        echo -e "${org}[~] Ok, chceš to teda?"
+
+        read option
+        option=${option^^}
+
+        if [ $option == "A" ]; then
+            cd ~/
+            git clone --recurse-submodules https://github.com/nullgemm/ly.git
+            make
+            sudo make install
+            sudo rm /etc/systemd/system/display-manager.service
+            sudo systemctl enable ly.service
+            sudo systemctl disable getty@tty2.service
+            echo -e "${grn}[+] Ok, nainstalováno. Chceš otevřít konfiguraci?(VSCODE):"
+
+            rm ~/ly/
+
+            option=${option^^}
+            if [ $option == "A" ]; then
+                code /etc/ly/config.ini
+            fi
+        fi
+        
+        sleep 1
+        command ./manager.sh
+        ;;
     
     00 | 0)
         exit
