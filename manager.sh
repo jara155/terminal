@@ -62,14 +62,14 @@ case $option in
         echo -e "${blue}└─${red}$ Ahuuj"
         
         echo
-        echo -e "${reset}Libí? (${grn}y${reset}/${red}n${reset})"
+        echo -e "${reset}Libí? (${grn}A${reset}/${red}N${reset})"
 
         read moznost
         clear
 
         moznost=${moznost^^}
 
-        if [ $moznost == "Y" ]; then
+        if [ $moznost == "A" ]; then
             if [ -f ~/.zshrc ]; then
                 rm ~/.zshrc
             fi
