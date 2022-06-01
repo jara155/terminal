@@ -65,14 +65,14 @@ case $option in
         clear
         echo "[] = pwd(Trasa), {} = git branch"
         echo
-        echo -e "${blue}┌──(${red}$(whoami)@Linux${blue})-[${wht}~${blue}]-{${grn}main${blue}}"
+        echo -e "${blue}┌──(${red}$(whoami)@$(uname -n)${blue})-[${wht}~${blue}]-{${grn}main${blue}}"
         echo -e "${blue}└─${red}$ Ahuuj"
         
         echo
         echo -e "${reset}Libí? (${grn}A${reset}/${red}N${reset})"
 
         read moznost
-        clear
+        clear;
 
         moznost=${moznost^^}
 
